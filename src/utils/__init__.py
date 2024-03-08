@@ -1,0 +1,1 @@
+from .config import firebase_config
