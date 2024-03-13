@@ -3,6 +3,7 @@ from src.routers import auth
 import uvicorn
 import os
 
+
 app = FastAPI(title="Backend TCC")
 app.include_router(auth.router)
 
