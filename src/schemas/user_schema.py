@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from uuid import UUID
 from datetime import datetime
-from src.schemas import AddressSchema
+from src.schemas.address_schema import AddressSchema
 from src.enum import UserType
 
 class UserSchema(BaseModel):
