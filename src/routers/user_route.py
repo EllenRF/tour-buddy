@@ -9,7 +9,7 @@ from src.schemas import LoginSchema, SignUpSchema
 from src.utils import firebase_config
 import pyrebase
 
-router = APIRouter()
+router = APIRouter(prefix="/user")
 
 
 if not firebase_admin._apps:
