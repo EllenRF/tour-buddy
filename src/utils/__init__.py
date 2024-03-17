@@ -1,1 +1,1 @@
-from .config import firebase_config
+from .config import firebase_config, firebase_certificate_credentials
