@@ -15,3 +15,5 @@ firebase_config = {
     "measurementId": os.getenv("MEASUREMENT_ID"),
     "databaseURL": "",
 }
+
+firebase_certificate_credentials = os.getenv("CERTIFICATE_CREDENTIALS")

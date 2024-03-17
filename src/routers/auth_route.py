@@ -2,18 +2,17 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 from fastapi.requests import Request
-
-import firebase_admin
 from firebase_admin import credentials, auth
 from src.schemas import LoginSchema, SignUpSchema
-from src.utils import firebase_config
+from src.utils import firebase_config, firebase_certificate_credentials
 import pyrebase
+import firebase_admin
 
 router = APIRouter(prefix="/auth")
 
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate("serviceAccountKey.json")
+    cred = credentials.Certificate(firebase_certificate_credentials)
     firebase_admin.initialize_app(cred)
 
 
