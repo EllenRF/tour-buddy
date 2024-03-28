@@ -7,10 +7,14 @@ from src.enum import UserType
 class UserSchema(BaseModel):
     user_id: UUID
     name: str
+    password: str
     email: str
     phone_number: str
     address: AddressSchema
     date_birth: datetime
-    avatar_url: str
     cpf: str
     user_type: UserType
+    id_avatar_url: str | None = None
+
+    class Config:
+        orm_mode = True
