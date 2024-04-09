@@ -1,4 +1,3 @@
-
 FROM python:3.12 as python-base
 
 ENV PYTHONUNBUFFERED=1 \
@@ -46,7 +45,7 @@ WORKDIR $PYSETUP_PATH
 COPY poetry.lock pyproject.toml ./
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN poetry install --no-dev
+RUN poetry install --only main
 
 # `development` image is used during development / testing
 FROM python-base as development
