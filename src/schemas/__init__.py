@@ -4,3 +4,4 @@ from .city_schema import CitySchema
 from .state_schema import StateSchema
 from .login_schema import LoginSchema
 from .signup_schema import SignUpSchema
+from .roadmap_schema import RoadmapSchema

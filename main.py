@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from src.routers import auth_route, user_route
+from src.routers import auth_route, user_route, roadmap_route
 from src.database.db import engine, Base, get_db
 
 Base.metadata.create_all(bind=engine)
@@ -8,6 +8,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Backend TCC")
 app.include_router(auth_route.router, tags=["auth"])
 app.include_router(user_route.router, tags=["users"])
+app.include_router(roadmap_route.router, tags=["roadmap"])
 
 
 if __name__ == "__main__":
