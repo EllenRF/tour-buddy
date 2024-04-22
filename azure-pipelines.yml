@@ -12,9 +12,9 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '01737846-3e9a-4787-b1be-632d0cd49903'
   imageRepository: 'tourbuddyv1'
-  containerRegistry: 'tourbuddy.azurecr.io'
+  containerRegistry: ''
   dockerfilePath: '**/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tag: 'build'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -32,8 +32,16 @@ stages:
       displayName: Build and push an image to container registry
       inputs:
         command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        repository: tourbuddyv1
+        dockerfile: '**/Dockerfile'
+        containerRegistry: 'tourbuddy.azurecr.io'
         tags: |
-          $(tag)
+          - build
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure for Students (79f23dcf-85b4-4267-8f6a-9c6799bc1bf3)'
+        appType: 'webAppContainer'
+        WebAppName: 'tourbuddy-testv2'
+        DockerNamespace: 'tourbuddy.azurecr.io'
+        DockerRepository: 'tourbuddyv1'
